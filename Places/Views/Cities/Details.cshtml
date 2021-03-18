@@ -1,0 +1,43 @@
+@{
+  Layout = "_Layout";
+}
+
+@using Places.Models;
+@model Places.Models.City;
+
+<h2>City details</h2>
+<hr>
+<h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h3>
+
+@if(@Model.JoinEntities.Count == 0)
+{
+  <p>No one has visited @Html.DisplayFor(model => model.Name) yet.</p>
+}
+else
+{
+  <h4>@Html.DisplayFor(model => model.Name) has been visited by:</h4>
+  <ul>
+  @foreach(var join in Model.JoinEntities)
+  {
+    <li>@join.Person.Name</li>
+  }
+  </ul>
+}
+@if(@Model.Landmarks.Count == 0)
+{
+  <p>@Html.DisplayFor(model => model.Name) does not have any landmarks.</p>
+}
+else
+{
+  <h4>@Html.DisplayFor(model => model.Name) has been visited by:</h4>
+  <ul>
+  @foreach(Landmark landmark in Model.Landmarks)
+  {
+    <li>@Html.ActionLink($"{landmark.Name}", "Details", "Landmarks", new { id = landmark.LandmarkId })</li>
+  }
+  </ul>
+}
+
+<input type="button" class="btn btn-outline-warning" value="Edit city" onclick="location.href='@Url.Action("Edit", new { id = Model.CityId })'">
+<input type="button" class="btn btn-outline-danger" value="Delete city" onclick="location.href='@Url.Action("Delete", new { id = Model.CityId })'">
+<input type="button" class="btn btn-outline-primary" value="Back to list" onclick="location.href='@Url.Action("Index")'">

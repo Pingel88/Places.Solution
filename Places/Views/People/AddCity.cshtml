@@ -1,0 +1,22 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Places.Models.Person
+
+<h2>Add City</h2>
+
+<h4>Add a City this person has visited: @Html.DisplayFor(model => model.Name)</h4>
+
+@using (Html.BeginForm())
+{
+  @Html.HiddenFor(model => model.PersonId)
+  
+  @Html.Label("Select city")
+  @Html.DropDownList("CityId")
+
+  <input type="submit" value="Save">
+}
+
+<input type="button" class="btn btn-outline-primary" value="Home" onclick="location.href='@Url.Action("Index", "Home")'">
+<input type="button" class="btn btn-outline-primary" value="Back to list" onclick="location.href='@Url.Action("Index")'">

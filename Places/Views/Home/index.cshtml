@@ -2,8 +2,8 @@
   Layout = "_Layout";
 }
 
-<h1>All The Places You've Been!</h1>
+<h1>All Of The Places We've Been!</h1>
 
-<button class="btn btn-outline-primary">@Html.ActionLink("See all Cities", "Index", "Cities")</button>
-<button class="btn btn-outline-primary">@Html.ActionLink("See all Landmarks", "Index", "Landmarks")</button>
-<button class="btn btn-outline-primary">@Html.ActionLink("See all People", "Index", "People")</button>
+<input type="button" class="btn btn-outline-primary" value="See the people" onclick="location.href='@Url.Action("Index", "People")'">
+<input type="button" class="btn btn-outline-primary" value="See the cities" onclick="location.href='@Url.Action("Index", "Cities")'">
+<input type="button" class="btn btn-outline-primary" value="See the landmarks" onclick="location.href='@Url.Action("Index", "Landmarks")'">

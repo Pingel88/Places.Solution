@@ -1,0 +1,56 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Places.Models.Person
+
+<h2>Person Profile</h2>
+<hr>
+<h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h3>
+
+@if(@Model.JoinCityPerson.Count == 0)
+{
+  <p>This person has not visited any cities yet!</p>
+}
+else
+{
+  <h4>Cities this person has visited:</h4>
+  <ul>
+  @foreach(var join in Model.JoinCityPerson)
+  {
+    <li>@join.City.Name</li>
+
+    @using (Html.BeginForm("DeleteCity", "People"))
+    {
+      @Html.Hidden("joinId", @join.CityPersonId)
+      <input type="submit" value="Delete"/>
+    }
+  }
+  </ul>
+}
+
+@if(@Model.JoinLandmarkPerson.Count == 0)
+{
+  <p>This person has not visited any landmarks yet!</p>
+}
+else
+{
+  <h4>Landmarks this person has visited:</h4>
+  <ul>
+  @foreach(var join in Model.JoinLandmarkPerson)
+  {
+    <li>@join.Landmark.Name</li>
+
+    @using (Html.BeginForm("DeleteLandmark", "People"))
+    {
+      @Html.Hidden("joinId", @join.LandmarkPersonId)
+      <input type="submit" value="Delete">
+    }
+  }
+  </ul>
+}
+
+<input type="button" class="btn btn-outline-primary" value="Back to list" onclick="location.href='@Url.Action("Index")'">
+<input type="button" class="btn btn-outline-warning" value="Edit person" onclick="location.href='@Url.Action("Edit"), new { id = Model.PersonId })'">
+<input type="button" class="btn btn-outline-danger" value="Delete person" onclick="location.href='@Url.Action("Delete"), new { id = Model.PersonId })'">
+<input type="button" class="btn btn-outline-success" value="Add city" onclick="location.href='@Url.Action("AddCity")'">

@@ -1,0 +1,21 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Places.Models.City
+
+<h2>Edit</h2>
+
+<h4>Edit @Html.DisplayFor(model => model.Name):</h4>
+
+@using (Html.BeginForm())
+{
+  @Html.HiddenFor(model => model.CityId)
+
+  @Html.LabelFor(model => model.Name)
+  @Html.EditorFor(model => model.Name)
+
+  <input type="submit" value="Save" class="btn btn-outline-success">
+}
+
+<input type="button" class="btn btn-outline-primary" value="Back to details" onclick="location.href='@Url.Action("Details", new { id = Model.CityId })'">

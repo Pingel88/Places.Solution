@@ -1,0 +1,27 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Places.Models.Person
+
+<h2>Edit</h2>
+
+<h4>Edit this Person's profile: @Html.DisplayFor(model => model.Name)</h4>
+
+@using (Html.BeginForm())
+{
+  @Html.HiddenFor(model => model.PersonId)
+
+  @Html.LabelFor(model => model.Name)
+  @Html.EditorFor(model => model.Name)
+
+  @Html.Label("Select a City")
+  @Html.DropDownList("CityId")
+
+  @Html.Label("Select a Landmark")
+  @Html.DropDownList("LandmarkId")
+
+  <input type="submit" value="Save">
+}
+
+<p>@Html.ActionLink("Back to Student list", "Index")</p>

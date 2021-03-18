@@ -1,0 +1,22 @@
+@{
+  Layout = "_Layout";
+}
+
+@using Places.Models;
+@model List<Places.Models.Person>;
+
+<h1>People</h1>
+
+@if (@Model.Count == 0)
+{
+  <h3>No People have been added yet!</h3>
+}
+<ul>
+@foreach (Person person in Model)
+{
+    <li>@Html.ActionLink($"{person.Name}", "Details", new { id = person.PersonId })</li>
+}
+</ul>
+
+<input type="button" class="btn btn-outline-primary" value="Home" onclick="location.href='@Url.Action("Index", "Home")'">
+<input type="button" class="btn btn-outline-primary" value="Add new Person" onclick="location.href='@Url.Action("Create")'">
