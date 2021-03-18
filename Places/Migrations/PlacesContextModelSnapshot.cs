@@ -126,13 +126,13 @@ namespace Places.Migrations
 
             modelBuilder.Entity("Places.Models.Landmark", b =>
                 {
-                    b.HasOne("Places.Models.City", "city")
+                    b.HasOne("Places.Models.City", "City")
                         .WithMany("Landmarks")
                         .HasForeignKey("CityId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("city");
+                    b.Navigation("City");
                 });
 
             modelBuilder.Entity("Places.Models.LandmarkPerson", b =>

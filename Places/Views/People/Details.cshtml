@@ -53,5 +53,5 @@ else
 <input type="button" class="btn btn-outline-primary" value="Back to list" onclick="location.href='@Url.Action("Index")'">
 <input type="button" class="btn btn-outline-warning" value="Edit person" onclick="location.href='@Url.Action("Edit", new { id = Model.PersonId })'">
 <input type="button" class="btn btn-outline-danger" value="Delete person" onclick="location.href='@Url.Action("Delete", new { id = Model.PersonId })'">
-<input type="button" class="btn btn-outline-success" value="Add city" onclick="location.href='@Url.Action("AddCity")'">
-<input type="button" class="btn btn-outline-success" value="Add landmark" onclick="location.href='@Url.Action("AddLandmark")'">
+<input type="button" class="btn btn-outline-success" value="Add city" onclick="location.href='@Url.Action("AddCity", new { id = Model.PersonId })'">
+<input type="button" class="btn btn-outline-success" value="Add landmark" onclick="location.href='@Url.Action("AddLandmark", new { id = Model.PersonId })'">

@@ -8,7 +8,7 @@ using Places.Models;
 namespace Places.Migrations
 {
     [DbContext(typeof(PlacesContext))]
-    [Migration("20210318204405_initial")]
+    [Migration("20210318233908_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -128,13 +128,13 @@ namespace Places.Migrations
 
             modelBuilder.Entity("Places.Models.Landmark", b =>
                 {
-                    b.HasOne("Places.Models.City", "city")
+                    b.HasOne("Places.Models.City", "City")
                         .WithMany("Landmarks")
                         .HasForeignKey("CityId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("city");
+                    b.Navigation("City");
                 });
 
             modelBuilder.Entity("Places.Models.LandmarkPerson", b =>
