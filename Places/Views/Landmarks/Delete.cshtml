@@ -1,0 +1,14 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Places.Models.Landmark
+
+<h2>Are you sure you want to delete this landmark?</h2>
+
+@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)
+@using (Html.BeginForm())
+{
+  <input type="submit" value="Delete" class="btn btn-outline-danger">
+}
+<input type="button" class="btn btn-outline-primary" value="Back to details" onclick="location.href='@Url.Action("Details", new { id = Model.LandmarkId })'">

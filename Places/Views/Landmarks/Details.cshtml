@@ -1,0 +1,27 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Places.Models.Landmark;
+
+<h1>@Html.DisplayFor(model => model.Name) in @Html.DisplayFor(model => model.City.Name)</h1>
+<hr>
+
+@if(@Model.JoinEntities.Count == 0)
+{
+  <p>No one has visited @Html.DisplayFor(model => model.Name) yet.</p>
+}
+else
+{
+  <h4>@Html.DisplayFor(model => model.Name) has been visited by:</h4>
+  <ul>
+  @foreach(var join in Model.JoinEntities)
+  {
+    <li>@Html.ActionLink($"{join.Person.Name}", "Details", "People", new { id = join.Person.PersonId })</li>
+  }
+  </ul>
+}
+
+<input type="button" class="btn btn-outline-warning" value="Edit landmark" onclick="location.href='@Url.Action("Edit", new { id = Model.LandmarkId })'">
+<input type="button" class="btn btn-outline-danger" value="Delete landmark" onclick="location.href='@Url.Action("Delete", new { id = Model.LandmarkId })'">
+<input type="button" class="btn btn-outline-primary" value="Back to list" onclick="location.href='@Url.Action("Index")'">

@@ -19,7 +19,7 @@ else
   <ul>
   @foreach(var join in Model.JoinEntities)
   {
-    <li>@join.Person.Name</li>
+    <li>@Html.ActionLink($"{join.Person.Name}", "Details", "People", new { id = join.Person.PersonId })</li>
   }
   </ul>
 }
@@ -29,7 +29,7 @@ else
 }
 else
 {
-  <h4>@Html.DisplayFor(model => model.Name) has been visited by:</h4>
+  <h4>@Html.DisplayFor(model => model.Name) has these landmarks:</h4>
   <ul>
   @foreach(Landmark landmark in Model.Landmarks)
   {

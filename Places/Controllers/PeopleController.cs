@@ -59,7 +59,7 @@ namespace Places.Controllers
     {
       Person thisPerson = _db.People.FirstOrDefault(person => person.PersonId == id);
       ViewBag.CityId = new SelectList(_db.Cities, "CityId", "Name");
-      ViewBag.LandmarkId = new SelectList(_db.Landmarks, "LandmarkId", "Landmark");
+      ViewBag.LandmarkId = new SelectList(_db.Landmarks, "LandmarkId", "Name");
       return View(thisPerson);
     }
 
@@ -114,10 +114,10 @@ namespace Places.Controllers
       return RedirectToAction("Index");
     }
 
-        public ActionResult AddLandmark (int id)
+    public ActionResult AddLandmark (int id)
     {
       Person thisPerson = _db.People.FirstOrDefault(person => person.PersonId == id);
-      ViewBag.LandmarkId = new SelectList(_db.Cities, "LandmarkId", "Name");
+      ViewBag.LandmarkId = new SelectList(_db.Landmarks, "LandmarkId", "Name");
       return View(thisPerson);
     }
 

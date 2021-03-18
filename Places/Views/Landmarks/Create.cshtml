@@ -1,0 +1,20 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Places.Models.Landmark
+
+<h4>Add a new landmark</h4>
+
+@using (Html.BeginForm())
+{
+  @Html.LabelFor(model => model.Name)
+  @Html.TextBoxFor(model => model.Name)
+
+  @Html.Label("Select a City")
+  @Html.DropDownList("CityId")
+
+  <input type="submit" value="Add new landmark" class="btn btn-outline-success">
+}
+
+<input type="button" class="btn btn-outline-primary" value="Back to list" onclick="location.href='@Url.Action("Index")'">

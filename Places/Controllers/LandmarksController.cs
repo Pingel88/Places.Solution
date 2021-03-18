@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +24,7 @@ namespace Places.Controllers
 
     public ActionResult Create()
     {
+      ViewBag.CityId = new SelectList(_db.Cities, "CityId", "Name");
       return View();
     }
 
